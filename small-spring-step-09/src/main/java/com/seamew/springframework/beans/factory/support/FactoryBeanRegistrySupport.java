@@ -32,7 +32,9 @@ public class FactoryBeanRegistrySupport extends DefaultSingletonBeanRegistry {
      */
     protected Object getObjectFromFactoryBean(FactoryBean factory, String beanName) {
         if (factory.isSingleton()) {
+            // 线程安全，防止多次创建单例对象
             Object object = this.factoryBeanObjectCache.get(beanName);
+            // 为了防止多次put进去导致报错
             if (object == null) {
                 object = doGetObjectFromFactoryBean(factory, beanName);
                 this.factoryBeanObjectCache.put(beanName, object != null ? object : NULL_OBJECT);
