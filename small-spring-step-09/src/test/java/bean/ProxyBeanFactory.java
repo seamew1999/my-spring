@@ -23,7 +23,6 @@ public class ProxyBeanFactory implements FactoryBean<IUserDao> {
             hashMap.put("1", "lwc");
             hashMap.put("2", "shb");
             hashMap.put("3", "qqq");
-
             return "你被代理了 " + method.getName() + "：" + hashMap.get(args[0].toString());
         };
         return (IUserDao) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), new Class[]{IUserDao.class}, handler);

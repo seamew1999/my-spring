@@ -26,7 +26,6 @@ public class TestCglibProxy {
         CGLibProxy cgLibProxy = new CGLibProxy();
         // 返回一个代理类的对象--注意这里现在传入的是实现类
         Object obj = cgLibProxy.getProxyInstance(superMan);
-        System.out.println(obj.getClass());
         SuperMan man = (SuperMan) obj;
         man.self();
         // Man hu = (Man) obj;
